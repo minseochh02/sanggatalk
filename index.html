@@ -9,36 +9,6 @@
   <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/micromodal.css">
   <style>
-    @keyframes slideOutToLeft {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-}
-
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.slide-out {
-  animation: slideOutToLeft 1s forwards;
-}
-
-.slide-in {
-  animation: slideInFromRight 1s forwards;
-  display: block; /* Initially set to none in HTML, but block here to show after animation starts */
-}
     html,
     body {
       margin: 0;
@@ -113,12 +83,7 @@ button:hover {
 
 <body>
   <div class="container">
-  <div class="slide-out" id="commerceText">
-    <h1>Commerce</h1>
-  </div>
-  <div class="slide-in" id="ecommerceText" style="display: none;">
-    <h1>eCommerce</h1>
-  </div>
+    <h1 id="commerce">Commerce</h1>
     <h3 id="to">to</h3>
     <h1 id="ecommerce" style="display:none;">eCommerce</h1>
     <button onclick="goKorWhitePaper()">백서 보기</button>
@@ -181,14 +146,7 @@ button:hover {
       document.getElementById('whiteWrapper').remove();
   }
 
-  window.onload = () => {
-      setTimeout(() => {
-        document.getElementById('commerceText').classList.add('slide-out');
-        let ecommerceText = document.getElementById('ecommerceText');
-        ecommerceText.style.display = 'block'; // Enable the eCommerce div to make it visible
-        ecommerceText.classList.add('slide-in');
-      }, 1000); // Adjust the timing based on when you want the animation to occur
-    }
+  
     </script>
 </body>
 
