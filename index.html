@@ -9,6 +9,44 @@
   <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/micromodal.css">
   <style>
+    #text-container {
+  position: relative;
+  height: 60px;  /* Ensure this is enough to contain your h1 elements */
+  overflow: hidden;
+}
+
+#e-commerce {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.slide-in-top {
+  animation: slideInTop 2s forwards;
+}
+
+.slide-in-bottom {
+  animation: slideInBottom 2s forwards;
+}
+
+@keyframes slideInTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  50%, 100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  50%, 100% {
+    transform: translateY(0);
+  }
+}
     html,
     body {
       margin: 0;
@@ -83,9 +121,13 @@ button:hover {
 
 <body>
   <div class="container">
+  <div id="text-container">
     <h1 id="commerce">Commerce</h1>
-    <h3 id="to">to</h3>
-    <h1 id="ecommerce" style="display:none;">eCommerce</h1>
+    <!-- Notice we are now wrapping eCommerce in a span for better control -->
+    <span id="e-commerce">
+      <h1>eCommerce</h1>
+    </span>
+  </div>
     <button onclick="goKorWhitePaper()">백서 보기</button>
     <button onclick="goEngWhitePaper()">Check out our whitepaper</button>
     <button disabled>스태이킹</button>
@@ -146,13 +188,21 @@ button:hover {
       document.getElementById('whiteWrapper').remove();
   }
 
-      let toggle = false;
+  document.addEventListener("DOMContentLoaded", function () {
+    const eCom = document.getElementById('e-commerce');
+    let isTop = true;
 
-        setInterval(() => {
-          document.getElementById('commerce').style.display = toggle ? 'block' : 'none';
-          document.getElementById('ecommerce').style.display = toggle ? 'none' : 'block';
-          toggle = !toggle;
-        }, 2000);
+    setInterval(() => {
+      if (isTop) {
+        eCom.classList.remove('slide-in-top');
+        eCom.classList.add('slide-in-bottom');
+      } else {
+        eCom.classList.remove('slide-in-bottom');
+        eCom.classList.add('slide-in-top');
+      }
+      isTop = !isTop;
+    }, 4000);  // Adjust time for longer display
+  });
 
     </script>
 </body>
