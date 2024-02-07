@@ -9,43 +9,35 @@
   <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/micromodal.css">
   <style>
-    #text-container {
-  position: relative;
-  height: 60px;  /* Ensure this is enough to contain your h1 elements */
-  overflow: hidden;
-}
-
-#e-commerce {
-  position: absolute;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.slide-in-top {
-  animation: slideInTop 2s forwards;
-}
-
-.slide-in-bottom {
-  animation: slideInBottom 2s forwards;
-}
-
-@keyframes slideInTop {
-  0% {
-    transform: translateY(-100%);
+    @keyframes slideOutToLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
   }
-  50%, 100% {
-    transform: translateY(0);
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
   }
 }
 
-@keyframes slideInBottom {
-  0% {
-    transform: translateY(100%);
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
   }
-  50%, 100% {
-    transform: translateY(0);
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
+}
+
+.slide-out {
+  animation: slideOutToLeft 1s forwards;
+}
+
+.slide-in {
+  animation: slideInFromRight 1s forwards;
+  display: block; /* Initially set to none in HTML, but block here to show after animation starts */
 }
     html,
     body {
@@ -120,18 +112,18 @@ button:hover {
 </head>
 
 <body>
-  <div class="container">
-  <div id="text-container">
-    <h1 id="commerce">Commerce</h1>
-    <!-- Notice we are now wrapping eCommerce in a span for better control -->
-    <span id="e-commerce">
-      <h1>eCommerce</h1>
-    </span>
+<div class="container">
+  <div class="slide-out" id="commerceText">
+    <h1>Commerce</h1>
   </div>
-    <button onclick="goKorWhitePaper()">백서 보기</button>
-    <button onclick="goEngWhitePaper()">Check out our whitepaper</button>
-    <button disabled>스태이킹</button>
+  <div class="slide-in" id="ecommerceText" style="display: none;">
+    <h1>eCommerce</h1>
   </div>
+  <h3>to</h3>
+  <button onclick="goKorWhitePaper()">백서 보기</button>
+  <button onclick="goEngWhitePaper()">Check out our whitepaper</button>
+  <button disabled>스태이킹</button>
+</div>
   <div id="whiteWrapper"></div>
   <div id="mobileWrapper">
     <img src="/src/sgt.png" />
@@ -187,23 +179,15 @@ button:hover {
       });
       document.getElementById('whiteWrapper').remove();
   }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const eCom = document.getElementById('e-commerce');
-    let isTop = true;
-
-    setInterval(() => {
-      if (isTop) {
-        eCom.classList.remove('slide-in-top');
-        eCom.classList.add('slide-in-bottom');
-      } else {
-        eCom.classList.remove('slide-in-bottom');
-        eCom.classList.add('slide-in-top');
-      }
-      isTop = !isTop;
-    }, 4000);  // Adjust time for longer display
-  });
-
+  window.onload = () => {
+    setTimeout(() => {
+      document.getElementById('commerceText').classList.add('slide-out');
+      let ecommerceText = document.getElementById('ecommerceText');
+      ecommerceText.style.display = 'block'; // Enable the eCommerce div to make it visible
+      ecommerceText.classList.add('slide-in');
+    }, 1000); // Adjust the timing based on when you want the animation to occur
+  }
+  
     </script>
 </body>
 
