@@ -112,18 +112,19 @@ button:hover {
 </head>
 
 <body>
-<div class="container">
+  <div class="container">
   <div class="slide-out" id="commerceText">
     <h1>Commerce</h1>
   </div>
   <div class="slide-in" id="ecommerceText" style="display: none;">
     <h1>eCommerce</h1>
   </div>
-  <h3>to</h3>
-  <button onclick="goKorWhitePaper()">백서 보기</button>
-  <button onclick="goEngWhitePaper()">Check out our whitepaper</button>
-  <button disabled>스태이킹</button>
-</div>
+    <h3 id="to">to</h3>
+    <h1 id="ecommerce" style="display:none;">eCommerce</h1>
+    <button onclick="goKorWhitePaper()">백서 보기</button>
+    <button onclick="goEngWhitePaper()">Check out our whitepaper</button>
+    <button disabled>스태이킹</button>
+  </div>
   <div id="whiteWrapper"></div>
   <div id="mobileWrapper">
     <img src="/src/sgt.png" />
@@ -179,15 +180,15 @@ button:hover {
       });
       document.getElementById('whiteWrapper').remove();
   }
+
   window.onload = () => {
-    setTimeout(() => {
-      document.getElementById('commerceText').classList.add('slide-out');
-      let ecommerceText = document.getElementById('ecommerceText');
-      ecommerceText.style.display = 'block'; // Enable the eCommerce div to make it visible
-      ecommerceText.classList.add('slide-in');
-    }, 1000); // Adjust the timing based on when you want the animation to occur
-  }
-  
+      setTimeout(() => {
+        document.getElementById('commerceText').classList.add('slide-out');
+        let ecommerceText = document.getElementById('ecommerceText');
+        ecommerceText.style.display = 'block'; // Enable the eCommerce div to make it visible
+        ecommerceText.classList.add('slide-in');
+      }, 1000); // Adjust the timing based on when you want the animation to occur
+    }
     </script>
 </body>
 
