@@ -65,8 +65,10 @@ button {
 
 <body>
   <div class="container">
-    <p>Text</p>
-    <button>Button 1</button>
+    <h1>Commerce</h1>
+    <h6>to</h6>
+    <h1>eCommerce</h1>
+    <button>백서 보기</button>
     <button>Button 2</button>
     <button>Button 3</button>
   </div>
@@ -92,74 +94,41 @@ button {
           <button class="modal__btn btnWhitePapers" aria-label="Open whitepaper Eng ver.">Eng Ver</button>
         </footer>
       </div>
-  <script>
-    const whitePaperEngURL = "https://sgt-white-paper.s3.ap-northeast-2.amazonaws.com/2022-06/Sanggatalk-White-Paper-202206-English.pdf";
-    const whitePaperKorURL = "https://sgt-white-paper.s3.ap-northeast-2.amazonaws.com/2022-06/Sanggatalk-White-Paper-202206-%ED%95%9C%EA%B5%AD%EC%96%B4.pdf";
+<script>
+  const whitePaperEngURL = "https://sgt-white-paper.s3.ap-northeast-2.amazonaws.com/2022-06/Sanggatalk-White-Paper-202206-English.pdf";
+  const whitePaperKorURL = "https://sgt-white-paper.s3.ap-northeast-2.amazonaws.com/2022-06/Sanggatalk-White-Paper-202206-%ED%95%9C%EA%B5%AD%EC%96%B4.pdf";
 
-    function closeModal() {
-      MicroModal.close('modal-1');
+  function closeModal() {
+    MicroModal.close('modal-1');
+  }
+  function goEngWhitePaper() {
+    window.open(whitePaperEngURL);
+    closeModal();
+  }
+
+  function goKorWhitePaper() {
+    window.open(whitePaperKorURL);
+    closeModal();
+  }
+  const stakingURL = "https://staking.sanggatoken.io/";
+
+  window.onload = () => {
+    const touchDevice = (navigator.maxTouchPoints || 'ontouchstart' in document.documentElement);
+
+    if (touchDevice) { // touch Device => disable PC
+      document.getElementById('pcWrapper').remove();
+    } else { // PC or no touch Device => disable Mobile
+      document.getElementById('mobileWrapper').remove();
     }
-    function goEngWhitePaper() {
-      window.open(whitePaperEngURL);
-      closeModal();
-    }
+    document.querySelector('.modal__btn[aria-label="Open whitepaper Eng ver."]').onclick = () => goEngWhitePaper();
+    document.querySelector('.modal__btn[aria-label="Open whitepaper Kor ver."]').onclick = () => goKorWhitePaper();
 
-    function goKorWhitePaper() {
-      window.open(whitePaperKorURL)
-      closeModal();
-    }
-    const stakingURL = "https://staking.sanggatoken.io/"
-
-    window.onload = () => {
-      const touchDevice = (navigator.maxTouchPoints || 'ontouchstart' in document.documentElement);
-
-      if (touchDevice) { // touch Device => disable PC
-        document.getElementById('pcWrapper').remove();
-      } else { // PC or no touch Device => disable Mobile
-        document.getElementById('mobileWrapper').remove();
-      }
-
-      const whitePaperTags = Array.from(document.getElementsByClassName('whitepaper'));
-      const sanggatalkTags = Array.from(document.getElementsByClassName('SangGaTalk'));
-      const stakingTags = Array.from(document.getElementsByClassName('Staking'));
-      const stakingDisableTags = Array.from(document.getElementsByClassName('Staking-Disable'));
-      const btnWhitePapers = Array.from(document.getElementsByClassName('btnWhitePapers'));
-
-      for (const tag of whitePaperTags) {
-        // tag.onclick = () => window.open(whitePsaperEngURL);
-        tag.onclick = () => MicroModal.show('modal-1');
-      }
-
-      for (const tag of sanggatalkTags) {
-        tag.onclick = () => alert("준비 중 입니다.");
-      }
-
-      for (const tag of stakingTags) {
-        tag.onclick = () => window.open(stakingURL);
-      }
-
-      for (const tag of stakingDisableTags) {
-        tag.onclick = () => alert("스테이킹은 모바일 환경에서만 가능합니다.");
-      }
-
-      for (const tag of btnWhitePapers) {
-        tag.onclick = (ele) => {
-          const innerText = ele.target.innerText;
-          if (innerText === 'Kor Ver') {
-            goKorWhitePaper();
-          } else {
-            goEngWhitePaper();
-          }
-
-        }
-      }
-
-      MicroModal.init({
-        disableFocus: true
-      })
-      document.getElementById('whiteWrapper').remove();
-    }
-  </script>
+    MicroModal.init({
+      disableFocus: true
+    });
+    document.getElementById('whiteWrapper').remove();
+  }
+</script>
 </body>
 
 </html>
