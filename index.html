@@ -94,15 +94,20 @@ button:hover {
     <img src="/src/sgt.png" />
 
 <script>
-  const whitePaperEngURL = "https://drive.google.com/file/d/1dVO0KleOTo0S0r85esB1TbeI_xA778Pk/view?usp=drive_link";
-  const whitePaperKorURL = "https://drive.google.com/file/d/1WYao8uzzoFrw9gD5B2Dy9yo3swnHXcoI/view?usp=drive_link";
+  const whitePaperEngURL = "https://sgt-white-paper.s3.ap-northeast-2.amazonaws.com/2022-06/Sanggatalk-White-Paper-202206-English.pdf";
+  const whitePaperKorURL = "https://sgt-white-paper.s3.ap-northeast-2.amazonaws.com/2022-06/Sanggatalk-White-Paper-202206-%ED%95%9C%EA%B5%AD%EC%96%B4.pdf";
 
-
+  function closeModal() {
+    MicroModal.close('modal-1');
+  }
   function goEngWhitePaper() {
+    window.open(whitePaperEngURL);
+    closeModal();
   }
 
   function goKorWhitePaper() {
     window.open(whitePaperKorURL);
+    closeModal();
   }
   const stakingURL = "https://staking.sanggatoken.io/";
 
@@ -114,8 +119,15 @@ button:hover {
     } else { // PC or no touch Device => disable Mobile
       document.getElementById('mobileWrapper').remove();
     }
+      document.querySelector('.modal__btn[aria-label="Open whitepaper Eng ver."]').onclick = () => goEngWhitePaper();
+      document.querySelector('.modal__btn[aria-label="Open whitepaper Kor ver."]').onclick = () => goKorWhitePaper();
+
+      MicroModal.init({
+        disableFocus: true
+      });
+      document.getElementById('whiteWrapper').remove();
   }
-</script>
+    </script>
 </body>
 
 </html>
