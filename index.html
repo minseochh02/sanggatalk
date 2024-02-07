@@ -15,7 +15,22 @@
       padding: 0;
       overflow-x: hidden;
     }
+    .container {
+    width: 40%;
+    position: absolute;
+    top: 10%;
+    height: calc(100% - 40px); /* Adjust based on your needs */
+    border-left: 2px solid black; /* Left border */
+    padding: 20px; /* Add some padding inside the div */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start of the flex container (left) */
+}
 
+button {
+    margin-top: 10px; /* Add some margin on top of each button for spacing */
+}
     #whiteWrapper {
       width: 100vw;
       height: 100vh;
@@ -49,6 +64,12 @@
 </head>
 
 <body>
+  <div class="container">
+    <p>Text</p>
+    <button>Button 1</button>
+    <button>Button 2</button>
+    <button>Button 3</button>
+  </div>
   <div id="whiteWrapper"></div>
   <div id="mobileWrapper">
     <img src="/src/sgt.png" />
