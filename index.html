@@ -28,7 +28,10 @@ left: 5%;
     flex-direction: column;
     align-items: flex-start; /* Align items to the start of the flex container (left) */
 }
-
+button:disabled {
+  background-color: white;
+  color: grey;
+}
 button {
   width: 20%;
     margin-top: 10px;
@@ -80,9 +83,9 @@ button:hover {
 
 <body>
   <div class="container">
-    <h1>Commerce</h1>
-    <h3>to</h3>
-    <h1>eCommerce</h1>
+    <h1 id="commerce">Commerce</h1>
+    <h3 id="to">to</h3>
+    <h1 id="ecommerce" style="display:none;">eCommerce</h1>
     <button onclick="goKorWhitePaper()">백서 보기</button>
     <button onclick="goEngWhitePaper()">Check out our whitepaper</button>
     <button disabled>스태이킹</button>
@@ -142,6 +145,15 @@ button:hover {
       });
       document.getElementById('whiteWrapper').remove();
   }
+
+      let toggle = false;
+
+        setInterval(() => {
+          document.getElementById('commerce').style.display = toggle ? 'block' : 'none';
+          document.getElementById('ecommerce').style.display = toggle ? 'none' : 'block';
+          toggle = !toggle;
+        }, 2000);
+
     </script>
 </body>
 
