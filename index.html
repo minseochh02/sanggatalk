@@ -16,6 +16,7 @@
       overflow-x: hidden;
     }
     .container {
+      left: 5%;
     width: 40%;
     position: absolute;
     top: 10%;
@@ -29,7 +30,19 @@
 }
 
 button {
-    margin-top: 10px; /* Add some margin on top of each button for spacing */
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #333333;
 }
     #whiteWrapper {
       width: 100vw;
@@ -66,11 +79,11 @@ button {
 <body>
   <div class="container">
     <h1>Commerce</h1>
-    <h6>to</h6>
+    <h3>to</h3>
     <h1>eCommerce</h1>
-    <button>백서 보기</button>
-    <button>Button 2</button>
-    <button>Button 3</button>
+    <button onclick="goKorWhitePaper()">백서 보기</button>
+    <button onclick="goEngWhitePaper()">Check out our whitepaper</button>
+    <button disabled>스태이킹 (Coming Soon)</button>
   </div>
   <div id="whiteWrapper"></div>
   <div id="mobileWrapper">
@@ -79,28 +92,11 @@ button {
   <div id="pcWrapper">
     <img src="/src/sgt.png" />
 
-  <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-        <header class="modal__header">
-          <h2 class="modal__title" id="modal-1-title">
-            White Paper 　　　　　　
-          </h2>
-        </header>
-        <main class="modal__content" id="modal-1-content">
-        </main>
-        <footer class="modal__footer">
-          <button class="modal__btn btnWhitePapers" aria-label="Open whitepaper Kor ver.">Kor Ver</button>
-          <button class="modal__btn btnWhitePapers" aria-label="Open whitepaper Eng ver.">Eng Ver</button>
-        </footer>
-      </div>
 <script>
-  const whitePaperEngURL = "https://sgt-white-paper.s3.ap-northeast-2.amazonaws.com/2022-06/Sanggatalk-White-Paper-202206-English.pdf";
-  const whitePaperKorURL = "https://sgt-white-paper.s3.ap-northeast-2.amazonaws.com/2022-06/Sanggatalk-White-Paper-202206-%ED%95%9C%EA%B5%AD%EC%96%B4.pdf";
+  const whitePaperEngURL = "https://drive.google.com/file/d/1dVO0KleOTo0S0r85esB1TbeI_xA778Pk/view?usp=drive_link";
+  const whitePaperKorURL = "https://drive.google.com/file/d/1WYao8uzzoFrw9gD5B2Dy9yo3swnHXcoI/view?usp=drive_link";
 
-  function closeModal() {
-    MicroModal.close('modal-1');
-  }
+
   function goEngWhitePaper() {
     window.open(whitePaperEngURL);
     closeModal();
@@ -120,13 +116,6 @@ button {
     } else { // PC or no touch Device => disable Mobile
       document.getElementById('mobileWrapper').remove();
     }
-    document.querySelector('.modal__btn[aria-label="Open whitepaper Eng ver."]').onclick = () => goEngWhitePaper();
-    document.querySelector('.modal__btn[aria-label="Open whitepaper Kor ver."]').onclick = () => goKorWhitePaper();
-
-    MicroModal.init({
-      disableFocus: true
-    });
-    document.getElementById('whiteWrapper').remove();
   }
 </script>
 </body>
