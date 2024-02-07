@@ -29,6 +29,22 @@
     align-items: flex-start; /* Align items to the start of the flex container (left) */
 }
 
+button {
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #333333;
+}
+
     #whiteWrapper {
       width: 100vw;
       height: 100vh;
@@ -66,16 +82,16 @@
     <h1>Commerce</h1>
     <h3>to</h3>
     <h1>eCommerce</h1>
-    <!-- <button onclick="goKorWhitePaper()">백서 보기</button>
-    <button onclick="goEngWhitePaper()">Check out our whitepaper</button> -->
+    <button onclick="goKorWhitePaper()">백서 보기</button>
+    <button onclick="goEngWhitePaper()">Check out our whitepaper</button>
     <button disabled>스태이킹</button>
   </div>
   <div id="whiteWrapper"></div>
   <div id="mobileWrapper">
-    <img src="/src/sgt.png" />
+    <img src="/src/korea.png" />
   </div>
   <div id="pcWrapper">
-    <img src="/src/sgt.png" />
+    <img src="/src/korea.png" />
 
 <script>
   const whitePaperEngURL = "https://drive.google.com/file/d/1dVO0KleOTo0S0r85esB1TbeI_xA778Pk/view?usp=drive_link";
