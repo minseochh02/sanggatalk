@@ -51,10 +51,24 @@
 <body>
   <div id="whiteWrapper"></div>
   <div id="mobileWrapper">
-    <img src="/src/korea.png" />
+    <img src="/src/sgt.png" />
   </div>
   <div id="pcWrapper">
-    <img src="/src/korea.png" />
+    <img src="/src/sgt.png" />
+
+      <div id="modal-1" aria-hidden="true" class="modal">
+        <div tabindex="-1" data-micromodal-close>
+          <div role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+            <header>
+              <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+            </header>
+            <main>
+              <button class="btnWhitePapers">Eng Ver</button>
+              <button class="btnWhitePapers">Kor Ver</button>
+            </main>
+          </div>
+        </div>
+      </div>
   <script>
     const whitePaperEngURL = "https://sgt-white-paper.s3.ap-northeast-2.amazonaws.com/2022-06/Sanggatalk-White-Paper-202206-English.pdf";
     const whitePaperKorURL = "https://sgt-white-paper.s3.ap-northeast-2.amazonaws.com/2022-06/Sanggatalk-White-Paper-202206-%ED%95%9C%EA%B5%AD%EC%96%B4.pdf";
