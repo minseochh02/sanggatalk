@@ -92,7 +92,21 @@ button:hover {
   </div>
   <div id="pcWrapper">
     <img src="/src/sgt.png" />
-
+<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+  <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+      <header class="modal__header">
+        <h2 class="modal__title" id="modal-1-title">
+          White Paper 　　　　　　
+        </h2>
+      </header>
+      <main class="modal__content" id="modal-1-content">
+      </main>
+      <footer class="modal__footer">
+        <button class="modal__btn btnWhitePapers" aria-label="Open whitepaper Kor ver.">Kor Ver</button>
+        <button class="modal__btn btnWhitePapers" aria-label="Open whitepaper Eng ver.">Eng Ver</button>
+      </footer>
+    </div>
 <script>
   const whitePaperEngURL = "https://sgt-white-paper.s3.ap-northeast-2.amazonaws.com/2022-06/Sanggatalk-White-Paper-202206-English.pdf";
   const whitePaperKorURL = "https://sgt-white-paper.s3.ap-northeast-2.amazonaws.com/2022-06/Sanggatalk-White-Paper-202206-%ED%95%9C%EA%B5%AD%EC%96%B4.pdf";
